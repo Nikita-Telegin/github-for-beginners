@@ -1,0 +1,24 @@
+public class bubbleSort {
+
+    public static void main(String[] args) {
+        int i, j, sort;
+        //create array to be sorted
+        int[] arr = {7, 5, 3, 1, 7, 6, 1, 9, 2, 4, 76, 43, 10};
+        for (i = 0; i < arr.length; i++) {
+            for (j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    sort = arr[j];           // value the biggest number to sort
+                    arr[j] = arr[j + 1];     // value the smallest
+                    arr[j + 1] = sort;
+                }
+            }
+        }
+
+        // illustration the sorted array
+        for (int x = 0; x < arr.length; x++) {
+            System.out.print(arr[x] + ": ");
+        }
+
+
+    }
+}
