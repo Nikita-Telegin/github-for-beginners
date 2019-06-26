@@ -1,4 +1,4 @@
-public class example3 {
+public class biggestValue {
 
     private static  int[] selectionSort(int[] arr){
         int[] newArr = new int[arr.length];
