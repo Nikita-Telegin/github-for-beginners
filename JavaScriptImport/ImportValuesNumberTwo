@@ -1,0 +1,20 @@
+//Create function while copy database values from one tables to other tables
+function copyValuesBetweenTwoSheets_(from, to) {
+  var values = from.getRange('A1:D').getValues();
+
+  to.getRange("Range").clearContent();
+  to.getRange(1, 1, values.length, values[0].length).setValues(values);
+}
+
+  function CopyValues() {
+  var from = SpreadsheetApp.openById(
+    'ID google tables'
+  ).getSheetByName('nameSheets');  
+  var to = SpreadsheetApp.openById(
+    'ID google tables'
+  ).getSheetByName('nameSheets');
+  
+  copyValuesBetweenTwoSheets_(from, to);
+  //if you want to sort column, you can point number columns
+  to.sort(2);
+}
