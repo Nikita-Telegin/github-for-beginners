@@ -1,0 +1,38 @@
+/* That is my on first JavaScript in google spreadsheets
+* and it to do that take some values is in the tables and import to other tables.
+This is first example, how i used in my daily workspace everyday
+*/
+//creat function with parameters 
+function copyValuesBetweenTwoScheems(sid,tid,sname,tname,row,col,rows,cols) {
+
+  //Here we point name to table, from where will copies data base
+  var sid='indicate your google key' || 'default-sid';
+  
+  //and then we point name to table, where we will to past ours data base'
+  var tid='indicate your google key' || 'default-tid';
+  
+  //name of your sheet, where do we get the values
+  var sname='nameSheets' || 'Sheet1';
+  
+  //name of your sheet where we insert values
+  var tname='nameSheets' || 'Sheet2';
+  
+  var ss=SpreadsheetApp.openById(sid);
+  var sh=ss.getSheetByName(sname);
+  var row=row || 1;
+  var col=col || 1;
+  var rows=rows || sh.getLastRow()-row+1;
+  var cols=cols || sh.getLastColumn()-col+1;
+  
+  if(sid && tid && sname && tname && row && col && rows && cols) {
+    var rg=sh.getRange(row,col,rows,cols); 
+    var tss=SpreadsheetApp.openById(tid); 
+    var tsh=tss.getSheetByName(tname);    
+    tsh.getRange("Range").clearContent();//you might want to clear the entire sheet    
+    tsh.getRange(rg.getA1Notation()).setValues(rg.getValues());    
+    //if you need to change a number format of your date
+    tsh.getRange("Range").setNumberFormat('@');
+    tsh.getRange("Range").setNumberFormat('dd.mm.yyyy');
+    //tsh.sort(1);
+  }
+}
